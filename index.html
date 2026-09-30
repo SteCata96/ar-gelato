@@ -4,17 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gelato in AR</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
 <style>
-  body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-       font-family:-apple-system,system-ui,sans-serif;background:#fdf6ee;color:#2b1d14;text-align:center;padding:24px;box-sizing:border-box}
-  h1{font-size:28px;margin:0 0 8px}
-  p{margin:0 0 28px;opacity:.7}
-  a.btn{display:inline-block;background:#2b1d14;color:#fff;text-decoration:none;padding:18px 32px;border-radius:999px;font-size:18px;font-weight:600}
+  html,body{margin:0;height:100%;background:#fdf6ee;font-family:-apple-system,system-ui,sans-serif;color:#2b1d14}
+  model-viewer{width:100%;height:100%;--poster-color:transparent}
+  h1{position:fixed;top:20px;left:0;right:0;text-align:center;font-size:22px;margin:0;pointer-events:none}
+  .btn{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);background:#2b1d14;color:#fff;border:0;
+       padding:18px 34px;border-radius:999px;font-size:18px;font-weight:600;white-space:nowrap}
 </style>
 </head>
 <body>
-  <h1>🍦 Guardalo nella tua stanza</h1>
-  <p>Tocca il pulsante e inquadra una superficie</p>
-  <a class="btn" rel="ar" href="model.usdz"><img alt="" style="display:none">Vedi in AR</a>
+  <model-viewer src="model.glb" ios-src="model.usdz" alt="Cono gelato 3D"
+    ar ar-modes="webxr scene-viewer quick-look" ar-placement="floor"
+    camera-controls auto-rotate shadow-intensity="1" touch-action="pan-y">
+    <button slot="ar-button" class="btn">🍦 Vedi in AR</button>
+  </model-viewer>
+  <h1>Ruotalo col dito, poi mettilo nella tua stanza</h1>
 </body>
 </html>
